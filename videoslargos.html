@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>ConCiencia | Videos Largos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
+<path fill='%239b7bff' d='M12 21s-8-6.58-8-11.5S7.58 2 12 7.09 20 2 20 9.5 12 21 12 21z'/>
+</svg>">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* ====== ESTILO BASE IGUAL A TU SITIO ====== */
+
+:root{
+--primary:#9b7bff;
+--secondary:#c8b6ff;
+--background:#f6f3ff;
+--card:#ffffff;
+--text:#2d2d2d;
+--accent:#7a5cff;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+font-family:"Poppins",sans-serif;
+background:linear-gradient(135deg,#f6f3ff,#efeaff);
+color:var(--text);
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+header{
+background:linear-gradient(90deg,#8f6fff,#6a54ff);
+color:white;
+padding:18px;
+text-align:center;
+font-weight:600;
+font-size:20px;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+.layout{display:flex;flex:1;}
+
+.ad{
+width:160px;
+background:white;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:10px;
+border-left:1px solid #eee;
+border-right:1px solid #eee;
+}
+
+.ad img{max-width:100%;border-radius:10px;}
+
+main{
+flex:1;
+padding:30px;
+max-width:1100px;
+margin:auto;
+}
+
+/* BOTONES */
+
+.top-buttons{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+.btn{
+background:linear-gradient(90deg,#9b7bff,#6a54ff);
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:10px;
+cursor:pointer;
+font-family:Poppins;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+/* LISTA DE VIDEOS */
+
+.video-list{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-bottom:30px;
+}
+
+.video-card{
+background:white;
+border-radius:20px;
+padding:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+cursor:pointer;
+transition:.3s;
+text-align:center;
+}
+
+.video-card:hover{
+transform:translateY(-8px) scale(1.03);
+}
+
+.video-card i{
+font-size:30px;
+color:var(--primary);
+margin-bottom:10px;
+}
+
+.video-card h4{
+font-size:16px;
+}
+
+/* PLAYER */
+
+.player{
+display:none;
+grid-template-columns:2fr 1fr;
+gap:25px;
+animation:fadeUp .5s;
+}
+
+.video-container video{
+width:100%;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* VOLUMEN */
+
+.controls{
+margin-top:12px;
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.vol-btn{
+background:#eee;
+border:none;
+padding:6px 12px;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+font-size:16px;
+}
+
+.volume-bar{
+flex:1;
+height:8px;
+background:#ddd;
+border-radius:10px;
+overflow:hidden;
+}
+
+.volume-level{
+height:100%;
+width:50%;
+background:linear-gradient(90deg,#9b7bff,#6a54ff);
+transition:.3s;
+}
+
+/* PANEL DERECHO */
+
+.side{
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.tags{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-top:10px;
+}
+
+.tag{
+background:#f3efff;
+padding:5px 10px;
+border-radius:10px;
+font-size:12px;
+}
+
+.creditos{
+margin-top:20px;
+font-size:14px;
+color:#555;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:15px;
+font-size:13px;
+color:#777;
+}
+
+/* ANIMACION */
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+.ad{display:none;}
+.player{grid-template-columns:1fr;}
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+Videos Largos · ConCiencia
+</header>
+
+<div class="layout">
+
+<div class="ad">
+<img src="https://via.placeholder.com/140x500?text=Publicidad">
+</div>
+
+<main>
+
+<div class="top-buttons">
+<button class="btn" onclick="volverMenu()"><i class="fa fa-arrow-left"></i> Volver</button>
+<button class="btn" onclick="volverInicio()"><i class="fa fa-home"></i> Inicio</button>
+</div>
+
+<!-- LISTA -->
+<div id="listaVideos" class="video-list"></div>
+
+<!-- PLAYER -->
+<div id="player" class="player">
+
+<div class="video-container">
+<video id="videoPlayer" controls></video>
+
+<div class="controls">
+<button class="vol-btn" onclick="bajarVol()">-</button>
+
+<div class="volume-bar">
+<div id="volLevel" class="volume-level"></div>
+</div>
+
+<button class="vol-btn" onclick="subirVol()">+</button>
+</div>
+</div>
+
+<div class="side">
+<h3 id="tituloVideo"></h3>
+
+<div class="tags" id="tags"></div>
+
+<div class="creditos" id="creditos"></div>
+</div>
+
+</div>
+
+</main>
+
+<div class="ad">
+<img src="https://via.placeholder.com/140x500?text=Institucion">
+</div>
+
+</div>
+
+<footer>
+© 2026 ConCiencia
+</footer>
+
+<script>
+
+/* =========================
+   🎯 TAGS GLOBALES EDITABLES
+========================= */
+
+const TAGS_GLOBALES = [
+"alegria",
+"tristeza",
+"enojo",
+"ansiedad",
+"calma",
+"autoestima",
+"motivacion",
+"relaciones",
+"estres",
+"bienestar"
+];
+
+
+/* =========================
+   🎬 VIDEOS
+   (AQUI TU SOLO ASIGNAS TAGS)
+========================= */
+
+const videos = [
+
+{
+titulo:"Felicidad",
+file:"videos-largos/video1.mp4",
+tags:["alegria","motivacion","bienestar","autoestima","calma"],
+creditos:"Autor: ConCiencia · Psicologia positiva"
+},
+
+{
+titulo:"Ansiedad",
+file:"videos-largos/video2.mp4",
+tags:["ansiedad","estres","calma","autoestima","bienestar"],
+creditos:"Autor: ConCiencia · Control emocional"
+},
+
+{
+titulo:"Tristeza",
+file:"videos-largos/video3.mp4",
+tags:["tristeza","relaciones","autoestima","calma","bienestar"],
+creditos:"Autor: ConCiencia · Procesos emocionales"
+}
+
+];
+
+
+/* =========================
+   GENERAR TARJETAS
+========================= */
+
+const lista = document.getElementById("listaVideos");
+
+videos.forEach((v,i)=>{
+
+const card=document.createElement("div");
+card.className="video-card";
+
+card.innerHTML=`
+<i class="fa fa-play"></i>
+<h4>${v.titulo}</h4>
+`;
+
+card.onclick=()=>reproducir(i);
+
+lista.appendChild(card);
+
+});
+
+
+/* =========================
+   REPRODUCIR
+========================= */
+
+function reproducir(i){
+
+const v = videos[i];
+
+document.getElementById("player").style.display="grid";
+
+const video = document.getElementById("videoPlayer");
+
+video.src = v.file;
+video.volume = 0.5;
+
+document.getElementById("tituloVideo").innerText = v.titulo;
+document.getElementById("creditos").innerText = v.creditos;
+
+/* CARGAR TAGS */
+
+const cont = document.getElementById("tags");
+cont.innerHTML="";
+
+v.tags.forEach(t=>{
+
+/* Validacion opcional contra globales */
+if(TAGS_GLOBALES.includes(t)){
+
+const span=document.createElement("span");
+span.className="tag";
+span.innerText=t;
+
+cont.appendChild(span);
+
+}
+
+});
+
+}
+
+
+/* =========================
+   VOLUMEN
+========================= */
+
+function subirVol(){
+const video=document.getElementById("videoPlayer");
+if(video.volume<1){
+video.volume+=0.1;
+actualizarBarra(video.volume);
+}
+}
+
+function bajarVol(){
+const video=document.getElementById("videoPlayer");
+if(video.volume>0){
+video.volume-=0.1;
+actualizarBarra(video.volume);
+}
+}
+
+function actualizarBarra(v){
+document.getElementById("volLevel").style.width=(v*100)+"%";
+}
+
+
+/* =========================
+   NAVEGACION
+========================= */
+
+function volverMenu(){
+window.location.href="menuayuda.html";
+}
+
+function volverInicio(){
+window.location.href="index.html";
+}
+
+</script>
+
+</body>
+</html>

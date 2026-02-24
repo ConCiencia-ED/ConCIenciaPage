@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>ConCiencia | Contactos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
+<path fill='%239b7bff' d='M12 21s-8-6.58-8-11.5S7.58 2 12 7.09 20 2 20 9.5 12 21 12 21z'/>
+</svg>">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+:root{
+--primary:#9b7bff;
+--secondary:#c8b6ff;
+--background:#f6f3ff;
+--card:#ffffff;
+--text:#2d2d2d;
+--accent:#7a5cff;
+}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:"Poppins",sans-serif;
+background:linear-gradient(135deg,#f6f3ff,#efeaff);
+color:var(--text);
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+/* HEADER */
+
+header{
+background:linear-gradient(90deg,#8f6fff,#6a54ff);
+color:white;
+padding:18px;
+text-align:center;
+font-weight:600;
+font-size:20px;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* LAYOUT */
+
+.layout{
+display:flex;
+flex:1;
+}
+
+/* ADS */
+
+.ad{
+width:160px;
+background:white;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:10px;
+border-left:1px solid #eee;
+border-right:1px solid #eee;
+}
+
+.ad img{
+max-width:100%;
+border-radius:10px;
+}
+
+/* MAIN */
+
+main{
+flex:1;
+padding:30px;
+max-width:900px;
+margin:auto;
+}
+
+/* SEARCH */
+
+.search{
+background:white;
+padding:10px 16px;
+border-radius:50px;
+display:flex;
+align-items:center;
+gap:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+margin-bottom:30px;
+transition:0.3s;
+}
+
+.search:focus-within{
+transform:scale(1.03);
+}
+
+.search input{
+border:none;
+outline:none;
+flex:1;
+font-size:15px;
+font-family:Poppins;
+}
+
+/* LOADER BUSQUEDA */
+
+.search-loader{
+
+display:flex;
+align-items:center;
+gap:10px;
+color:var(--primary);
+font-size:14px;
+margin-bottom:15px;
+
+opacity:0;
+transform:translateY(-10px);
+transition:.3s;
+
+}
+
+.search-loader.show{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+
+/* TITLE */
+
+.title{
+font-size:32px;
+font-weight:700;
+color:#3c2f7a;
+margin-bottom:25px;
+animation:fadeUp 0.6s;
+}
+
+/* CARD DIRECTORIO */
+
+
+#lista{
+
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(380px, 1fr));
+gap:25px;
+
+}
+
+/* TARJETAS */
+
+.psico-card{
+
+display:flex;
+gap:20px;
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+transition:0.3s;
+
+/* ANIMACION BASE */
+opacity:0;
+transform:translateY(30px) scale(.96);
+
+}
+
+/* CUANDO APARECE */
+
+.psico-card.show{
+
+opacity:1;
+transform:translateY(0) scale(1);
+
+}
+
+/* HOVER */
+
+.psico-card:hover{
+
+transform:translateY(-8px) scale(1.02);
+
+}
+
+.psico-card{
+
+display:flex;
+gap:20px;
+background:white;
+padding:20px;
+border-radius:20px;
+margin-bottom:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+transition:0.3s;
+
+
+}
+
+.psico-card:hover{
+
+transform:translateY(-5px);
+
+}
+
+.psico-img{
+
+width:90px;
+height:90px;
+border-radius:50%;
+object-fit:cover;
+
+}
+
+.psico-info{
+flex:1;
+}
+
+.psico-name{
+
+font-weight:600;
+font-size:18px;
+margin-bottom:5px;
+
+}
+
+.psico-exp{
+
+color:#666;
+font-size:14px;
+margin-bottom:10px;
+
+}
+
+/* TAGS */
+
+.tags{
+
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-bottom:10px;
+
+}
+
+.tag{
+
+background:#f3efff;
+padding:4px 10px;
+border-radius:10px;
+font-size:12px;
+
+}
+
+/* DETAILS */
+
+.details{
+
+font-size:13px;
+color:#555;
+margin-bottom:10px;
+
+}
+
+/* BUTTON */
+
+
+
+.btn{
+
+background:linear-gradient(90deg,#9b7bff,#6a54ff);
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:10px;
+cursor:pointer;
+font-family:Poppins;
+transition:0.3s;
+
+}
+
+
+
+.btn:hover{
+
+transform:scale(1.05);
+
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:15px;
+font-size:13px;
+color:#777;
+}
+
+/* TOAST */
+
+.toast{
+position:fixed;
+bottom:20px;
+right:20px;
+background:linear-gradient(90deg,#9b7bff,#6a54ff);
+color:white;
+padding:14px 18px;
+border-radius:10px;
+opacity:0;
+transition:0.4s;
+}
+
+.toast.show{
+opacity:1;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.ad{
+display:none;
+}
+
+.psico-card{
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+Directorio de Psicólogos · ConCiencia
+</header>
+
+<div class="layout">
+
+<div class="ad">
+<img id="adLeft">
+</div>
+
+<main>
+
+<!-- BOTON VOLVER (PONLO AQUI) -->
+<button class="btn" onclick="volver()" style="margin-bottom:20px;">
+<i class="fa fa-arrow-left"></i> Volver al inicio
+</button>
+
+<div class="search">
+<i class="fa fa-search"></i>
+<input type="text" placeholder="Buscar psicólogo..." oninput="buscar(this.value)">
+</div>
+
+<div id="searchLoader" class="search-loader">
+<i class="fa fa-spinner fa-spin"></i>
+<span>Buscando psicólogo...</span>
+</div>
+
+
+<div class="title">
+Psicólogos en Culiacán
+</div>
+
+<div id="lista">
+
+<!-- CARD 1 -->
+
+<div class="psico-card" data-name="Maria Lopez">
+
+<img class="psico-img"
+src="https://randomuser.me/api/portraits/women/44.jpg">
+
+<div class="psico-info">
+
+<div class="psico-name">
+Dra. María López
+</div>
+
+<div class="psico-exp">
+10 años de experiencia · Terapia emocional
+</div>
+
+<div class="tags">
+<span class="tag">Ansiedad</span>
+<span class="tag">Depresión</span>
+<span class="tag">Autoestima</span>
+</div>
+
+<div class="details">
+📍 Culiacán, Sinaloa<br>
+💲 $500 por sesión
+</div>
+
+<button class="btn"
+onclick="copiar('6671234567')">
+Contactar
+</button>
+
+
+
+</div>
+</div>
+
+<!-- PSICOLOGO 3 -->
+<div class="psico-card" data-name="Ana Torres">
+
+<img class="psico-img"
+src="https://randomuser.me/api/portraits/women/68.jpg">
+
+<div class="psico-info">
+
+<div class="psico-name">
+Lic. Ana Torres
+</div>
+
+<div class="psico-exp">
+8 años de experiencia · Psicología clínica
+</div>
+
+<div class="tags">
+<span class="tag">Ansiedad</span>
+<span class="tag">Autoestima</span>
+<span class="tag">Estrés</span>
+</div>
+
+<div class="details">
+📍 Col. Centro, Culiacán<br>
+💲 $450 por sesión
+</div>
+
+<button class="btn"
+onclick="copiar('6672348890')">
+Contactar
+</button>
+
+</div>
+</div>
+
+
+<!-- PSICOLOGO 4 -->
+<div class="psico-card" data-name="Jorge Martinez">
+
+<img class="psico-img"
+src="https://randomuser.me/api/portraits/men/45.jpg">
+
+<div class="psico-info">
+
+<div class="psico-name">
+Dr. Jorge Martínez
+</div>
+
+<div class="psico-exp">
+12 años de experiencia · Terapia de pareja
+</div>
+
+<div class="tags">
+<span class="tag">Pareja</span>
+<span class="tag">Comunicación</span>
+<span class="tag">Conflictos</span>
+</div>
+
+<div class="details">
+📍 Las Quintas, Culiacán<br>
+💲 $650 por sesión
+</div>
+
+<button class="btn"
+onclick="copiar('6679981122')">
+Contactar
+</button>
+
+</div>
+</div>
+
+
+<!-- PSICOLOGO 5 -->
+<div class="psico-card" data-name="Daniela Castro">
+
+<img class="psico-img"
+src="https://randomuser.me/api/portraits/women/12.jpg">
+
+<div class="psico-info">
+
+<div class="psico-name">
+Lic. Daniela Castro
+</div>
+
+<div class="psico-exp">
+Especialista en adolescentes
+</div>
+
+<div class="tags">
+<span class="tag">Adolescentes</span>
+<span class="tag">Ansiedad</span>
+<span class="tag">Emociones</span>
+</div>
+
+<div class="details">
+📍 Tres Ríos, Culiacán<br>
+💲 $500 por sesión
+</div>
+
+<button class="btn"
+onclick="copiar('6675567788')">
+Contactar
+</button>
+
+</div>
+</div>
+
+
+<!-- PSICOLOGO 6 -->
+<div class="psico-card" data-name="Ricardo Vega">
+
+<img class="psico-img"
+src="https://randomuser.me/api/portraits/men/29.jpg">
+
+<div class="psico-info">
+
+<div class="psico-name">
+Dr. Ricardo Vega
+</div>
+
+<div class="psico-exp">
+Psicoterapia emocional avanzada
+</div>
+
+<div class="tags">
+<span class="tag">Depresión</span>
+<span class="tag">Ansiedad</span>
+<span class="tag">Trauma</span>
+</div>
+
+<div class="details">
+📍 Chapultepec, Culiacán<br>
+💲 $700 por sesión
+</div>
+
+<button class="btn"
+onclick="copiar('6674412299')">
+Contactar
+</button>
+
+</div>
+</div>
+
+
+<!-- PSICOLOGO 7 -->
+<div class="psico-card" data-name="Fernanda Ibarra">
+
+<img class="psico-img"
+src="https://randomuser.me/api/portraits/women/33.jpg">
+
+<div class="psico-info">
+
+<div class="psico-name">
+Lic. Fernanda Ibarra
+</div>
+
+<div class="psico-exp">
+Psicología emocional y bienestar
+</div>
+
+<div class="tags">
+<span class="tag">Estrés</span>
+<span class="tag">Autoestima</span>
+<span class="tag">Bienestar</span>
+</div>
+
+<div class="details">
+📍 Guadalupe, Culiacán<br>
+💲 $480 por sesión
+</div>
+
+<button class="btn"
+onclick="copiar('6677739922')">
+Contactar
+</button>
+
+</div>
+</div>
+
+
+<!-- CARD 2 -->
+
+<div class="psico-card" data-name="Carlos Ruiz">
+
+<img class="psico-img"
+src="https://randomuser.me/api/portraits/men/32.jpg">
+
+<div class="psico-info">
+
+<div class="psico-name">
+Dr. Carlos Ruiz
+</div>
+
+<div class="psico-exp">
+Especialista en terapia cognitiva
+</div>
+
+<div class="tags">
+<span class="tag">Estrés</span>
+<span class="tag">Pareja</span>
+<span class="tag">Ansiedad</span>
+</div>
+
+<div class="details">
+📍 Culiacán, Sinaloa<br>
+💲 $600 por sesión
+</div>
+
+<button class="btn"
+onclick="copiar('6677654321')">
+Contactar
+</button>
+
+</div>
+</div>
+
+</div>
+
+</main>
+
+<div class="ad">
+<img id="adRight">
+</div>
+
+</div>
+
+<footer>
+© 2026 ConCiencia · Directorio profesional
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+/* PUBLICIDAD ALEATORIA */
+
+const ads=["publicidad1.png","publicidad2.png"];
+
+document.getElementById("adLeft").src=
+ads[Math.floor(Math.random()*ads.length)];
+
+document.getElementById("adRight").src=
+ads[Math.floor(Math.random()*ads.length)];
+
+/* COPIAR CONTACTO */
+
+function copiar(texto){
+
+navigator.clipboard.writeText(texto);
+
+const toast=document.getElementById("toast");
+
+toast.innerText="Contacto copiado";
+
+toast.classList.add("show");
+
+setTimeout(()=>toast.classList.remove("show"),2000);
+
+}
+
+/* BUSCAR */
+
+let searchTimeout;
+
+function buscar(valor){
+
+clearTimeout(searchTimeout);
+
+const loader=document.getElementById("searchLoader");
+
+loader.classList.add("show");
+
+const cards=document.querySelectorAll(".psico-card");
+
+cards.forEach(card=>{
+card.style.opacity="0.3";
+card.style.transform="scale(.95)";
+});
+
+searchTimeout=setTimeout(()=>{
+
+valor=valor.toLowerCase();
+
+cards.forEach(card=>{
+
+const name=card.dataset.name.toLowerCase();
+
+if(name.includes(valor)){
+
+card.style.display="flex";
+
+setTimeout(()=>{
+card.style.opacity="1";
+card.style.transform="scale(1)";
+},50);
+
+}else{
+
+card.style.display="none";
+
+}
+
+});
+
+loader.classList.remove("show");
+
+}, 600); // tiempo animacion (ms)
+
+}
+
+
+
+
+function volver(){
+window.location.href="index.html";
+}
+
+/* ANIMACION ESCALONADA PROFESIONAL */
+
+window.addEventListener("load",()=>{
+
+const cards=document.querySelectorAll(".psico-card");
+
+cards.forEach((card,i)=>{
+
+setTimeout(()=>{
+
+card.classList.add("show");
+
+}, i*120); // velocidad (ms)
+
+});
+
+});
+
+
+
+
+</script>
+
+</body>
+</html>
